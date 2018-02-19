@@ -4,30 +4,30 @@ import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
-import Router from './Router'
+import Router from './Router';
 
 class App extends Component {
     componentWillMount() {
-        var config = {
-            apiKey: 'AIzaSyAjHwCvftP1w0nKJTylUQcXAH-rThhZ6sQ',
-            authDomain: 'bold-circuit-429.firebaseapp.com',
-            databaseURL: 'https://bold-circuit-429.firebaseio.com',
-            projectId: 'bold-circuit-429',
-            storageBucket: 'bold-circuit-429.appspot.com',
-            messagingSenderId: '270696683683'
-          };
-          firebase.initializeApp(config);
+      var config = {
+        apiKey: "AIzaSyBoo_sPDdZ-OAS28S-D0w38AIy0eL2lI2c",
+        authDomain: "employeeapp-9e7e6.firebaseapp.com",
+        databaseURL: "https://employeeapp-9e7e6.firebaseio.com",
+        projectId: "employeeapp-9e7e6",
+        storageBucket: "",
+        messagingSenderId: "1072988300786"
+      };
+      firebase.initializeApp(config);
     }
 
-    render(){
+    render() {
         const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
-
-        return(
-            <Provider store={store}>
-                <Router />
-            </Provider>
+    
+        return (
+          <Provider store={store}>
+            <Router />
+          </Provider>
         );
+      }
     }
-}
-
-export default App;
+    
+    export default App;
