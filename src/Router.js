@@ -14,19 +14,19 @@ const RouterComponent = () => {
 
         <Scene key="main">
             <Scene 
-            titleStyle={Styles.navigationTitle} 
-            key="employee" 
-            component={EmployeeList} 
-            title="Employees" 
-            rightTitle="Add"
-            onRight={() => Actions.employeeCreate()}
-            initial
+                titleStyle={Styles.navigationTitle} 
+                key="employeeList" 
+                component={EmployeeList} 
+                title="Employees" 
+                rightTitle="Add"
+                onRight={() => Actions.employeeCreate()}
+                initial
             />
             <Scene 
-            titleStyle={Styles.navigationTitle}
-            key="employeeCreate"
-            component={EmployeeCreate}
-            title="Create Employee"
+                titleStyle={Styles.navigationTitle}
+                key="employeeCreate"
+                component={EmployeeCreate}
+                title="Create Employee"
             />
         </Scene>
         </Scene>
