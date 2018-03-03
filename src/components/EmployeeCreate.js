@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, Picker } from 'react-native';
-import { Card, CardSection, Input, Button} from './common';
+import { Card, CardSection, Button} from './common';
 import { connect } from 'react-redux';
 import { employeeUpdate, employeeCreate } from '../actions';
+import EmployeeForm from './EmployeeForm';
 
 class EmployeeCreate extends Component {
 
@@ -16,49 +16,14 @@ class EmployeeCreate extends Component {
     render() {
         return(
             <Card>
-                <CardSection>
-                    <Input 
-                        label="Name" 
-                        placeholder="Haider" 
-                        value={this.props.name}
-                        onChangeText={text => this.props.employeeUpdate({ prop: 'name', value: text })}
-                        />
-                </CardSection>
-                <CardSection>
-                    <Input 
-                        label="Phone"
-                        placeholder="555-555-5555" 
-                        value={this.props.phone}
-                        onChangeText={text => this.props.employeeUpdate({ prop: 'phone', value: text })}
-                        />
-                </CardSection>
-                <CardSection>
-                    <Text style={ Styles.pickerTextStyle }> Shift </Text>
-                    <Picker
-                        style={{ flex: 1 }}
-                        selectedValue={this.props.shift}
-                        onValueChange={text => this.props.employeeUpdate({ prop: 'shift', value: text })}>
-                    <Picker.Item label="Monday" value="Monday" />
-                    <Picker.Item label="Tuesday" value="Tuesday" />
-                    <Picker.Item label="Wednesday" value="Wednesday" />
-                    <Picker.Item label="Thursday" value="Thursday" />
-                    <Picker.Item label="Friday" value="Friday" />
-                    <Picker.Item label="Saturday" value="Saturday" />
-                    <Picker.Item label="Sunday" value="Sunday" />
-                    </Picker>
-                </CardSection>
+                <EmployeeForm {...this.props}/>
                 <CardSection>
                     <Button onPress={this.onButtonPress.bind(this)}>Create</Button>
                 </CardSection>
             </Card>
+            //{..this.props} means here that we're passing every prop recieved by EmployeeCreate 
+            //Component to EmployeeForm
         );
-    }
-}
-
-const Styles = {
-    pickerTextStyle: {
-        fontSize: 18,
-      
     }
 }
 
