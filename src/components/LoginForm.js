@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { CardSection, Card, Input, Button, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class LoginForm extends Component {
     onEmailChange(text) {
@@ -25,8 +26,12 @@ class LoginForm extends Component {
         }
 
         return(
-            <Button onPress={this.onButtonPress.bind(this)}> 
-                Login 
+            <Button 
+                e_buttontextstyle={{ fontSize: 18, color: '#fff' }} 
+                e_buttonstyle={{ backgroundColor: '#5bbc2e', borderColor: '#5bbc2e' , marginTop: 30, elevation: 1 }} 
+                onPress={this.onButtonPress.bind(this)}> 
+                
+                LOG IN 
             </Button>
         );
     }
@@ -45,13 +50,34 @@ class LoginForm extends Component {
 
     render() {
         return(
-            <Card>
-                <CardSection>
+            <Card e_cardstyle={{ flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                elevation: 0,
+                backgroundColor: '#fff',
+                paddingLeft: 30,
+                paddingRight: 30,
+                marginLeft: 0,
+                marginRight: 0,
+                marginTop: 0 }}>
+
+                <CardSection e_cardsecstyle={{ borderBottomWidth: 0 }}>
+                    <Image
+                        style={{ width: 320, height: 80 }} 
+                        source={require('../img/logo.png')}
+
+                    />
+                </CardSection>
+
+                <CardSection e_cardsecstyle={{ borderBottomWidth: 0 }}>
+                <Icon style={Styles.iconStyle} name="person" size={30} color="#000" />
+
                     <Input
-                        label='Email'
-                        placeHolder='email@gmail.com'
+                        placeholder='Email'
                         onChangeText={this.onEmailChange.bind(this)}
                         value={this.props.email}
+                        e_labelstyle={{ flex: 0 }}
                         //What is this function bind to?
 
                         //Actually, this bind function has a 'this' keyword and 'this' keyword is actually a
@@ -64,20 +90,20 @@ class LoginForm extends Component {
                     />
                 </CardSection>
 
-                <CardSection>
-
+                <CardSection e_cardsecstyle={{ borderBottomWidth: 0 }}>
+                <Icon style={Styles.iconStyle} name="lock" size={30} color="#000" />
                     <Input 
                         secureTextEntry
-                        label='Password'
-                        placeHolder='password'
+                        placeholder='Password'
                         onChangeText={this.onPasswordChange.bind(this)}
                         value={this.props.password}
+                        e_labelstyle={{ flex: 0 }}
                     />
                 </CardSection>
 
                 {this.renderError()}
 
-                <CardSection>
+                <CardSection e_cardsecstyle={{ borderBottomWidth: 0 }}>
                     {this.renderButton()}
                 </CardSection>
             </Card>
@@ -90,6 +116,9 @@ const Styles = {
         fontSize: 20,
         alignSelf: 'center',
         color: 'red'
+    },
+    iconStyle: {
+        paddingTop: 10
     }
 }
 
