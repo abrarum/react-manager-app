@@ -4,7 +4,7 @@ import { View } from 'react-native';
 const Card = (props) => {
     return (
          // Telling card to render any children by saying props.children
-        <View style={styles.containerStyle}>
+        <View style={[styles.containerStyle, props.e_cardstyle]}>
             { props.children } 
         </View>
     );
